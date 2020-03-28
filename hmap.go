@@ -2,7 +2,7 @@ package redis
 
 import (
 	"encoding/json"
-	"github.com/trustwallet/blockatlas/pkg/errors"
+	"github.com/Pantani/errors"
 )
 
 // GetAllHMObjects get all objects from a hash map table.

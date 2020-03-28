@@ -2,8 +2,8 @@ package redis
 
 import (
 	"encoding/json"
+	"github.com/Pantani/errors"
 	"github.com/go-redis/redis"
-	"github.com/trustwallet/blockatlas/pkg/errors"
 )
 
 type Redis struct {
