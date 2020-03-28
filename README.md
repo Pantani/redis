@@ -1,0 +1,65 @@
+# Simple abstraction for Redis
+
+Simple abstraction using generic interfaces for Redis.
+
+Initialize the database:
+```go
+import "github.com/Pantani/redis"
+
+cache := redis.New()
+err := cache.Init("localhost:6379‎")
+if err != nil {
+	panic("Cannot initialize the redis storage")
+}
+if !storage.IsReady() {
+    panic("redis storage is not ready")
+}
+```
+
+ ## Fetching Objects:
+
+- Get value:
+```go
+var result CustomObject
+err := s.GetObject("key", &result)
+```
+
+- Add value
+```go
+data := CustomObject{Name: "name", Id: "id"}
+err := s.AddObject("key", data)
+```
+
+- Delete value:
+```go
+err := s.DeleteObject("table", "key")
+```
+
+
+### Hash Map
+
+Redis hash map abstraction
+
+E.g.:
+
+- Get all values from a hash map table:
+```go
+result, err := s.GetAllHMObjects("table")
+```
+
+- Get value from a hash map table:
+```go
+var result CustomObject
+err := s.GetHMObject("table", "key", &result)
+```
+
+- Add value to a hash map table:
+```go
+data := CustomObject{Name: "name", Id: "id"}
+err := s.AddHMObject("table", "key", data)
+```
+
+- Delete value from a hash map table:
+```go
+err := s.DeleteHMObject("table", "key")
+```
