@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 
 	"github.com/Pantani/errors"
-	"github.com/go-redis/redis"
+	"github.com/go-redis/redis/v8"
 )
 
 type Redis struct {
