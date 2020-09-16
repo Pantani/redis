@@ -13,11 +13,11 @@ type Redis struct {
 }
 
 // New returns a new database connection and an error if occurs.
-func New(host, password string) (*Redis, error) {
+func New(host, password string, dbIndex int) (*Redis, error) {
 	rdb := redis.NewClient(&redis.Options{
 		Addr:     host,
 		Password: password,
-		DB:       0,
+		DB:       dbIndex,
 	})
 	_, err := rdb.Ping(context.Background()).Result()
 	if err != nil {
