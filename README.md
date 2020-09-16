@@ -6,8 +6,7 @@ Initialize the database:
 ```go
 import "github.com/Pantani/redis"
 
-cache := redis.New()
-err := cache.Init("localhost:6379‎")
+cache := redis.New("localhost:6379‎", "password")
 if err != nil {
     panic("Cannot initialize the redis storage")
 }
