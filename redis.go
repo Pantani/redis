@@ -9,23 +9,21 @@ import (
 )
 
 type Redis struct {
-	client  *redis.Client
-	context *context.Context
+	client *redis.Client
 }
 
-// Init initialize the database passing the host url.
-// It returns an error if occurs.
-func (db *Redis) Init(host string) error {
-	options, err := redis.ParseURL(host)
+// New returns a new database connection and an error if occurs.
+func New(host, password string) (*Redis, error) {
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     host,
+		Password: password,
+		DB:       0,
+	})
+	_, err := rdb.Ping(context.Background()).Result()
 	if err != nil {
-		return errors.E(err, "Cannot connect to Redis")
+		return nil, errors.E(err, "Cannot connect to Redis")
 	}
-	client := redis.NewClient(options)
-	if err := client.Ping(context.Background()).Err(); err != nil {
-		return errors.E(err, "Redis connection test failed")
-	}
-	db.client = client
-	return nil
+	return &Redis{client: rdb}, nil
 }
 
 // GetObject get object from key.
