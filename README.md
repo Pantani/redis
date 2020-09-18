@@ -26,7 +26,10 @@ err := s.GetObject("key", &result)
 - Add value
 ```go
 data := CustomObject{Name: "name", Id: "id"}
-err := s.AddObject("key", data)
+err := s.AddObject("key", data, 0)
+
+// with expiration time
+err := s.AddObject("key", data, 10 * time.Second)
 ```
 
 - Delete value:
