@@ -3,6 +3,7 @@ package redis
 import (
 	"context"
 	"encoding/json"
+	"time"
 
 	"github.com/Pantani/errors"
 	"github.com/go-redis/redis/v8"
@@ -43,12 +44,12 @@ func (db *Redis) GetObject(ctx context.Context, key string, value interface{}) e
 
 // AddObject add object for a key.
 // It returns an error if occurs.
-func (db *Redis) AddObject(ctx context.Context, key string, value interface{}) error {
+func (db *Redis) AddObject(ctx context.Context, key string, value interface{}, duration time.Duration) error {
 	j, err := json.Marshal(value)
 	if err != nil {
 		return errors.E("fail to marshal value", err, errors.Params{"key": key})
 	}
-	cmd := db.client.Set(ctx, key, j, 0)
+	cmd := db.client.Set(ctx, key, j, duration)
 	if err := cmd.Err(); err != nil {
 		return errors.E("not stored", err, errors.Params{"key": key})
 	}
