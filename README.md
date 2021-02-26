@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/Pantani/redis/branch/master/graph/badge.svg?token=8IHUB3K2Q7)](https://codecov.io/gh/Pantani/redis)
+
 # Simple abstraction for [Go-Redis](github.com/go-redis/redis).
 
 Simple abstraction using generic interfaces for [Go-Redis](github.com/go-redis/redis).
