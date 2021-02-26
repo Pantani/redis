@@ -1,3 +1,4 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/Pantani/redis.svg)](https://pkg.go.dev/github.com/Pantani/redis)
 [![codecov](https://codecov.io/gh/Pantani/redis/branch/master/graph/badge.svg?token=8IHUB3K2Q7)](https://codecov.io/gh/Pantani/redis)
 
 # Simple abstraction for [Go-Redis](github.com/go-redis/redis).
